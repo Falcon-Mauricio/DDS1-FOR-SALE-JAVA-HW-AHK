@@ -99,35 +99,35 @@
 {{>header }}
 
 <div class="container">
-    <h2>Zonas</h2>
-    <p>Listado de todas las zonas a las que puedes acceder.</p>
+    <h2>Listado de Inmuebles</h2>
+    <p>Listado de todos los inmuebles disponibles en la base de datos.</p>
 
     <div class="actions">
-        <button>Filter</button>
-        <button>Edit</button>
-        <a href="/zonas/crear">
-            <button>Add</button>
-        </a>
-        <button>Delete</button>
-        <button>Export</button>
+        <button>Filtrar</button>
+        <button>Editar</button>
+        <button>Agregar</button>
+        <button>Eliminar</button>
+        <button>Exportar</button>
     </div>
 
     <table>
         <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>ID</th>
+            <th>ID del Inmueble</th>
+            <th>Ambientes</th>
+            <th>Tamaño</th>
+            <th>Ubicación</th>
         </tr>
         </thead>
         <tbody>
-            {{#zonas}}
-                <tr>
-                    <td>{{nombre}}</td>
-                    <td class="price">{{precio}}</td>
-                    <td class="id">{{id}}</td>
-                </tr>
-            {{/zonas}}
+        {{#inmuebles}}
+            <tr>
+                <td>{{id}}</td>
+                <td class="ambientes">{{cantAmbientes}}</td>
+                <td class="tamanio">{{tamanioEnM2}}</td>
+                <td class="zona">{{zona.nombre}}</td>
+            </tr>
+        {{/inmuebles}}
         </tbody>
     </table>
 </div>

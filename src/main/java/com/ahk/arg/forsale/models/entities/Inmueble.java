@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public abstract class Inmueble {
+    private Integer id;
     protected Integer cantAmbientes;
     protected Float tamanioEnM2;
     private  Zona zona;
