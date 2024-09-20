@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,11 +51,18 @@ public class ZonasController {
         return new ModelAndView("zonas", model);
     }
 
-    @PostMapping("/crear")
-    public ModelAndView CrearNuevaZona(@RequestParam("nombre") String nombre,
-                                       @RequestParam("precio") Float precio,
-                                       @RequestParam("id") Integer id,
-                                       Map<String, Object> model) {
+    @GetMapping("/crear")
+    public ModelAndView formularioDeCrear(Map<String, Object> model){
+        model.put("title", "For Sale");
+        model.put("zonas", this.zonas);
+        return new ModelAndView("CrearZona", model);
+    }
+
+    @PostMapping("/guardar")
+    public RedirectView CrearNuevaZona(@RequestParam("nombre") String nombre,
+                                            @RequestParam("precio") Float precio,
+                                            @RequestParam("id") Integer id,
+                                            Map<String, Object> model) {
         Zona nuevaZona = new Zona();
         nuevaZona.setId(id);
         nuevaZona.setNombre(nombre);
@@ -64,6 +72,6 @@ public class ZonasController {
 
         model.put("title", "For Sale");
         model.put("zonas", this.zonas);
-        return new ModelAndView("CrearZona", model); // Carga el formulario CrearZona.mustache
+        return new RedirectView("/zonas");
     }
 }
