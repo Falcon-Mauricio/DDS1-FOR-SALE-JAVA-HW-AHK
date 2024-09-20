@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alta de Zona</title>
+    <title>{{title}}</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -99,7 +99,7 @@
     <h2>Alta de Nueva Zona</h2>
     <p>Introduce los detalles de la nueva zona que quieres dar de alta.</p>
 
-    <form action="/alta-zona" method="POST">
+    <form action="/zonas" method="POST"> <!-- Cambiar "/crear" a "/zonas/dar-alta" -->
         <label for="nombre">Nombre de la Zona:</label>
         <input type="text" id="nombre" name="nombre" placeholder="Nombre de la zona" required>
 

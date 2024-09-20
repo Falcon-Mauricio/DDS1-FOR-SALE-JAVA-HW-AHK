@@ -60,6 +60,7 @@ public class InmueblesController {
         this.inmuebles.add(inmuebleDos);
         this.inmuebles.add(inmuebleTres);
     }
+
     @GetMapping
     public ModelAndView listadoDeInmuebles(Map<String, Object> model){
         model.put("title", "For Sale");

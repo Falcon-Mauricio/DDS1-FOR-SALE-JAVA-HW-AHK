@@ -3,7 +3,9 @@ package com.ahk.arg.forsale.controllers;
 import com.ahk.arg.forsale.models.entities.Zona;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -40,6 +42,7 @@ public class ZonasController {
         this.zonas.add(zonaTres);
         this.zonas.add(zonaCuatro);
     }
+
     @GetMapping
     public ModelAndView listadoDeZonas(Map<String, Object> model){
         model.put("title", "For Sale");
@@ -47,9 +50,20 @@ public class ZonasController {
         return new ModelAndView("zonas", model);
     }
 
-    @GetMapping("/crear")
-    public ModelAndView CrearZona(Map<String, Object> model){
+    @PostMapping("/crear")
+    public ModelAndView CrearNuevaZona(@RequestParam("nombre") String nombre,
+                                       @RequestParam("precio") Float precio,
+                                       @RequestParam("id") Integer id,
+                                       Map<String, Object> model) {
+        Zona nuevaZona = new Zona();
+        nuevaZona.setId(id);
+        nuevaZona.setNombre(nombre);
+        nuevaZona.setPrecio(precio);
+
+        this.zonas.add(nuevaZona);
+
         model.put("title", "For Sale");
-        return new ModelAndView("CrearZona", model);
+        model.put("zonas", this.zonas);
+        return new ModelAndView("CrearZona", model); // Carga el formulario CrearZona.mustache
     }
 }
