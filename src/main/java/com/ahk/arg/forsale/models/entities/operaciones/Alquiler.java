@@ -15,4 +15,9 @@ public class Alquiler extends Operacion{
         empleado.agregarComision(comision);
         return comision;
     }
+
+    @Override
+    public String tipo() {
+        return "Alquiler";
+    }
 }

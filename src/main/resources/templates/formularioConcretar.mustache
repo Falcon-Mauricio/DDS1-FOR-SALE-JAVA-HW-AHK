@@ -1,0 +1,26 @@
+{{#layout}}
+    <h2>Reserva de Inmueble</h2>
+    <p>Selecciona el empleado y el cliente para reservar el inmueble.</p>
+
+    <form id="form_concretar" action="/inmuebles/{{id}}/reservado" method="POST">
+        <div class="form-group">
+            <label for="select_empleado">Empleado:</label>
+            <select id="select_empleado" name="empleadoID" required>
+                {{#empleados}}
+                    <option value="{{id}}">{{nombre}} {{apellido}}</option>
+                {{/empleados}}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="select_cliente">Cliente:</label>
+            <select id="select_cliente" name="clienteID" required>
+                {{#clientes}}
+                    <option value="{{id}}">{{nombre}} {{apellido}}</option>
+                {{/clientes}}
+            </select>
+        </div>
+        <button type="submit">Reservar</button>
+    </form>
+{{/layout}}
+
+{{>layout}}

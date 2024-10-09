@@ -7,7 +7,13 @@ import lombok.Setter;
 @Getter
 public class Casa extends Inmueble {
     private Float valor;
-//super hace referencia a la clase padre
+
+    @Override
+    public String tipo() {
+        return "Casa";
+    }
+
+    //super hace referencia a la clase padre
     @Override
     public float precio() {
         return this.valor;

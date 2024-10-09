@@ -1,115 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a2e; /* Color oscuro de fondo */
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #0f3460; /* Color de fondo de la cabecera */
-        }
-        header h1 {
-            color: #00d4ff; /* Color del logo o título */
-            font-size: 24px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 20px;
-            font-size: 18px;
-        }
-        nav a:hover {
-            color: #00d4ff; /* Color de enlace al pasar el ratón */
-        }
-        .container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        h2 {
-            color: #fff;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        p {
-            color: #b0b0b0;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        .actions {
-            margin-bottom: 20px;
-        }
-        .actions button {
-            background-color: #00d4ff; /* Botones estilo Siemens */
-            border: none;
-            color: #1a1a2e;
-            padding: 10px 15px;
-            font-size: 16px;
-            margin-right: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .actions button:hover {
-            background-color: #00b2d4; /* Hover sobre botones */
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #16213e;
-            color: #fff;
-        }
-        th, td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #2e2e48;
-            text-align: left;
-        }
-        th {
-            background-color: #0f3460;
-            color: #00d4ff;
-            font-weight: bold;
-        }
-        tr:nth-child(even) {
-            background-color: #1f4068;
-        }
-        tr:hover {
-            background-color: #16213e;
-        }
-        footer {
-            margin-top: 30px;
-            padding: 10px 0;
-            text-align: center;
-            background-color: #0f3460;
-            color: #fff;
-        }
-    </style>
-</head>
-<body>
-
-{{>header }}
-
-<div class="container">
+{{#layout}}
     <h2>Zonas</h2>
     <p>Listado de todas las zonas a las que puedes acceder.</p>
 
     <div class="actions">
-        <button>Filter</button>
-        <button>Edit</button>
+        <button>Filtrar</button>
+        <button>Editar</button>
         <a href="/zonas/crear">
-            <button>Add</button>
+            <button>Agregar</button>
         </a>
-        <button>Delete</button>
-        <button>Export</button>
+        <button>Eliminar</button>
+        <button>Exportar</button>
     </div>
 
     <table>
@@ -130,11 +30,6 @@
             {{/zonas}}
         </tbody>
     </table>
-</div>
+{{/layout}}
 
-<footer>
-    © 2024 Siemens. All rights reserved.
-</footer>
-
-</body>
-</html>
+{{>layout}}

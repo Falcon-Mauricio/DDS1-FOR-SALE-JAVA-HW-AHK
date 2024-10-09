@@ -2,12 +2,8 @@ package com.ahk.arg.forsale.controllers;
 
 import com.ahk.arg.forsale.models.entities.Zona;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,9 +51,16 @@ public class ZonasController {
     public ModelAndView formularioDeCrear(Map<String, Object> model){
         model.put("title", "For Sale");
         model.put("zonas", this.zonas);
-        return new ModelAndView("CrearZona", model);
+        return new ModelAndView("formularioZona", model);
     }
 
+    @PostMapping("/guardar")
+    public ModelAndView guardarZona(@ModelAttribute Zona zona, Map<String, Object> model) {
+        this.zonas.add(zona);
+        model.put("title", "For Sale");
+        return new ModelAndView("exitoAlCrear", model);
+    }
+/*
     @PostMapping("/guardar")
     public RedirectView CrearNuevaZona(@RequestParam("nombre") String nombre,
                                             @RequestParam("precio") Float precio,
@@ -74,4 +77,5 @@ public class ZonasController {
         model.put("zonas", this.zonas);
         return new RedirectView("/zonas");
     }
+    */
 }

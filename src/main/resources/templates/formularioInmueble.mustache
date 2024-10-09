@@ -1,0 +1,71 @@
+{{#layout}}
+    <h2>Alta de un Nuevo Inmueble</h2>
+    <p>Introduce los detalles del nuevo inmueble que quieres dar de alta.</p>
+
+    <form id="form_inmuebles" action="/inmuebles/{{id}}/reservar" method="POST">
+        <div class="form-group">
+            <label for="select_tipo_inmueble">Tipo de Inmueble:</label>
+            <select id="select_tipo_inmueble" onchange="handlerCambioTipoInmueble()" name="tipoInmueble" required>
+                <option value="PH">PH</option>
+                <option value="Depto">Departamento</option>
+                <option value="Casa">Casa</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="id">ID del Inmueble:</label>
+            <input type="number" id="id" name="id" placeholder="ID único del inmueble" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cantAmbientes">Cantidad de Ambientes:</label>
+            <input type="number" id="cantAmbientes" name="cantAmbientes" placeholder="Cantidad de ambientes" required>
+        </div>
+
+        <div class="form-group">
+            <label for="tamanioEnM2">Tamaño en m²:</label>
+            <input type="number" step="0.01" id="tamanioEnM2" name="tamanioEnM2" placeholder="Tamaño en m²" required>
+        </div>
+
+        <div class="form-group" id="campoPrecioCasa" style="display: none;">
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" placeholder="Precio" required>
+        </div>
+
+        <button type="submit">Dar de alta</button>
+    </form>
+
+    <script type="text/javascript">
+        function handlerCambioTipoInmueble() {
+            cambiarEndpoint();
+            mostrarCamposEspecificos();
+        }
+
+        function cambiarEndpoint() {
+            const valorTipoInmueble = document.getElementById("select_tipo_inmueble").value;
+
+            // Cambiar el endpoint según el tipo de inmueble seleccionado
+            if (valorTipoInmueble === "Casa") {
+                document.getElementById("form_inmuebles").action = "/inmuebles/casa/guardar";
+            } else if (valorTipoInmueble === "PH") {
+                document.getElementById("form_inmuebles").action = "/inmuebles/ph/guardar";
+            } else {
+                document.getElementById("form_inmuebles").action = "/inmuebles/depto/guardar";
+            }
+        }
+
+        function mostrarCamposEspecificos() {
+            const valorTipoInmueble = document.getElementById("select_tipo_inmueble").value;
+            const campoPrecioCasa = document.getElementById("campoPrecioCasa");
+
+            // Mostrar el campo de precio solo si el tipo de inmueble es "Casa"
+            if (valorTipoInmueble === "Casa") {
+                campoPrecioCasa.style.display = "block";
+            } else {
+                campoPrecioCasa.style.display = "none";
+            }
+        }
+    </script>
+{{/layout}}
+
+{{>layout}}

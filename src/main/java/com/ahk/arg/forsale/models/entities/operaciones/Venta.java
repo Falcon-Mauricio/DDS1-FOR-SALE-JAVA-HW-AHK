@@ -8,4 +8,9 @@ public class Venta extends Operacion {
     public Float calcularComisionPara(Empleado empleado) {
         return super.inmueble.precioFinal() * porcentajeDeComision;
     }
+
+    @Override
+    public String tipo() {
+        return "Venta";
+    }
 }
